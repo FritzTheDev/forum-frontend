@@ -6,13 +6,11 @@ import {
     MDBBtn
 } from "mdbreact";
 
-import { userActions } from '../actions/index'
-
 import { connect } from 'react-redux';
 import { login, logout } from '../actions/user_actions';
 
 class Navbar extends Component {
-    state = { isOpen: false, user: null, username: '', password: '' };
+    state = { isOpen: false, user: null, email: '', password: '' };
 
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
@@ -25,12 +23,8 @@ class Navbar extends Component {
 
 
     handleLoginSubmit = (e) => {
-        const { username, password } = this.state;
-        const { dispatch } = this.props;
-        if (username && password) {
-            dispatch(userActions.login(username, password));
-        }
-        e.preventDefault();
+        const { email, password } = this.state;
+        this.props.login( email, password );
     }
 
     render() {
@@ -84,11 +78,5 @@ class Navbar extends Component {
         }
     }
 }
-
-// const map = (state) => {
-//     return {
-        
-//     }
-// }
 
 export default connect(null, { login, logout })(Navbar);

@@ -2,11 +2,12 @@ import { userConstants } from '../constants/user_constants';
 import { userService } from '../services';
 import { history } from '../helpers';
 
-export const login = (username, password) => {
+export const login = (email, password) => {
     return dispatch => {
-        userService.login({ username, password })
+        userService.login(email, password)
             .then(user => {
                 dispatch({ type: userConstants.LOGIN_SUCCESS, user });
+                history.push('/');
             });
     }
 }

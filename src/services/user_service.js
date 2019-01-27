@@ -15,13 +15,13 @@ import axios from 'axios';
 //         });
 // }
 
-const login = (username, password) => {
+const login = (email, password) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        data: JSON.stringify({ username, password })
+        body: JSON.stringify({ email, password })
     }
-    return axios.get('localhost:3000/user/authenticate', requestOptions)
+    return fetch('http://localhost:3000/user/authenticate', requestOptions)
         .then(handleResponse)
         .then(user => {
             localStorage.setItem('user', JSON.stringify(user));
@@ -37,7 +37,7 @@ const logout = () => {
 const handleResponse = (response) => {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
-        if (response.ok) {
+        if (!response.ok) {
             if (response.status === 401) {
                 logout();
                 window.location.reload(true);
@@ -45,7 +45,7 @@ const handleResponse = (response) => {
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
-    
+    console.log(data);
     return data;
     });
 }
