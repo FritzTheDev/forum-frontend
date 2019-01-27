@@ -10,7 +10,7 @@ const login = (username, password) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        data: JSON.stringify({ username, password });
+        data: JSON.stringify({ username, password })
     };
     return axios.get('localhost:3000/user/authenticate', requestOptions)
         .then(handleResponse)
