@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 
 class Navbar extends Component {
-    state = { isOpen: false, user: { username: 'OttoVBismarck' }, username: '', password: '' };
+    state = { isOpen: false, user: '', username: '', password: '' };
 
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
@@ -57,7 +57,7 @@ class Navbar extends Component {
                             <div className="md-form my-0">
                                 <input className="form-control mr-sm-2" type="text" placeholder="Password" />
                             </div>
-                            <MDBNavLink  to="#!" active>Log In</MDBNavLink>
+                            <MDBNavLink  to="#!" active><strong>Log In</strong></MDBNavLink>
                         </MDBFormInline>
                     </MDBNavItem>
                 </MDBNavbarNav>
