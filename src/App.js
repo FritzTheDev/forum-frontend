@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import { SignupPage, LoginPage, HomePage } from './pages'
+import { SignupPage, LoginPage, HomePage, ThreadPage } from './pages'
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
@@ -16,10 +16,9 @@ const App = () => {
           <Switch>
             <Route path="/signup" component={SignupPage} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/thread/:thread_id" component={ThreadPage} />
             <Route exact path="/" component={HomePage} />
-
           </Switch>
-
         </div>
       </BrowserRouter>
     </Provider>
