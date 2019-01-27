@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 
 class Navbar extends Component {
-    state = { isOpen: false, user: null, username: '', password: '' };
+    state = { isOpen: false, user: { username: 'OttoVBismarck' }, username: '', password: '' };
 
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
@@ -29,7 +29,7 @@ class Navbar extends Component {
                     {this.renderAuthSection()}
                 </MDBCollapse>
             </MDBNavbar>
-        )
+        );
     }
 
     renderAuthSection() {
@@ -40,7 +40,7 @@ class Navbar extends Component {
                         <MDBNavLink to="/profile">Signed in as <strong>{this.state.user.username}</strong></MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
-                        <MDBNavLink to="#!" onClick={() => console.log('Sign Out')}>Sign Out</MDBNavLink>
+                        <MDBNavLink to="" onClick={() => console.log('Sign Out')}>Sign Out</MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
                     </MDBNavItem>
@@ -50,12 +50,12 @@ class Navbar extends Component {
             return (
                 <MDBNavbarNav right>
                     <MDBNavItem>
-                        <MDBFormInline waves>
+                        <MDBFormInline>
                             <div className="md-form my-0">
                                 <input className="form-control mr-sm-2" type="text" placeholder="Username" />
                             </div>
                             <div className="md-form my-0">
-                                <input className="form-control mr-sm-2" type="text" placeholder="Username" />
+                                <input className="form-control mr-sm-2" type="text" placeholder="Password" />
                             </div>
                             <MDBNavLink  to="#!" active>Log In</MDBNavLink>
                         </MDBFormInline>
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, Navbar);
+export default connect(mapStateToProps)(Navbar);
