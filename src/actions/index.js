@@ -1,3 +1,3 @@
-import { user_actions } from './user_actions';
+import { user_actions as userActions } from './user_actions';
 
-export { user_actions };
+export { userActions };
