@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import { SignupPage } from './pages'
+import { SignupPage, LoginPage, HomePage } from './pages'
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
