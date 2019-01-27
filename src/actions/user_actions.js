@@ -8,6 +8,9 @@ export const user_actions = {
 };
 
 const login = (username, password) => {
+    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } };
+    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } };
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } };
     return dispatch => {
         dispatch(request({ username }));
 
@@ -22,12 +25,14 @@ const login = (username, password) => {
                 }
             );
     };
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } };
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } };
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } };
 }
 
 const logout = () => {
     userService.logout();
     return { type: userConstants.LOGOUT };
 }
+
+export const user_actions = {
+    login,
+    logout
+};

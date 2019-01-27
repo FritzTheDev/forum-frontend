@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
 
 import {
-    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline
+    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem,
+    MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
+    MDBBtn
 } from "mdbreact";
 
 import { connect } from 'react-redux';
 
+import { userActions } from '../actions';
+
 class Navbar extends Component {
-    state = { isOpen: false, user: '', username: '', password: '' };
+    state = { isOpen: false, user: null, username: '', password: '' };
 
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
     }
+    
+    handleChange = (e) => {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+        console.log(this.state);
+    }
+
+
     handleLoginSubmit = (e) => {
 
+        e.preventDefault();
     }
 
     render() {
@@ -50,15 +63,18 @@ class Navbar extends Component {
             return (
                 <MDBNavbarNav right>
                     <MDBNavItem>
-                        <MDBFormInline>
+                        <MDBFormInline onSubmit={this.handleLoginSubmit}>
                             <div className="md-form my-0">
-                                <input className="form-control mr-sm-2" type="text" placeholder="Username" />
+                                <input className="form-control mr-sm-2" onChange={this.handleChange} type="email" name="email" placeholder="Email" />
                             </div>
                             <div className="md-form my-0">
-                                <input className="form-control mr-sm-2" type="text" placeholder="Password" />
+                                <input className="form-control mr-sm-2" type="password" name="password" placeholder="Password" />
                             </div>
-                            <MDBNavLink  to="#!" active><strong>Log In</strong></MDBNavLink>
+                            {/* <MDBBtn color="white">Log In</MDBBtn> */}
                         </MDBFormInline>
+                    </MDBNavItem>
+                    <MDBNavItem>
+                        <MDBBtn color="white" onPress={this.handleLoginSubmit}>Log In</MDBBtn>
                     </MDBNavItem>
                 </MDBNavbarNav>
             )
