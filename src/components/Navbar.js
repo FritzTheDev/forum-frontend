@@ -24,7 +24,11 @@ class Navbar extends Component {
 
 
     handleLoginSubmit = (e) => {
-        userActions
+        const { username, password } = this.state;
+        const { dispatch } = this.props;
+        if (username && password) {
+            dispatch(userActions.login(username, password));
+        }
         e.preventDefault();
     }
 
