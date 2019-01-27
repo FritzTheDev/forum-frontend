@@ -1,10 +1,5 @@
 import axios from 'axios';
 
-export const userService = {
-    login,
-    logout
-}
-
 const login = (username, password) => {
     const requestOptions = {
         method: 'POST',
@@ -39,4 +34,9 @@ const handleResponse = (response) => {
     
     return data;
     });
+}
+
+export const userService = {
+    login,
+    logout
 }
