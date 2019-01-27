@@ -83,10 +83,10 @@ class Navbar extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
+// const mapStateToProps = (state) => {
+//     return {
+        
+//     }
+// }
 
-    }
-}
-
-export default connect(mapStateToProps)(Navbar);
+export default connect(null)(Navbar);
