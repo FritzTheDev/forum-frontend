@@ -77,7 +77,7 @@ class Navbar extends Component {
                         </MDBFormInline>
                     </MDBNavItem>
                     <MDBNavItem>
-                        <MDBBtn size="sm" outline color="white" onPress={this.handleLoginSubmit}><strong>Log In</strong></MDBBtn>
+                        <MDBBtn size="sm" outline color="white" onClick={this.handleLoginSubmit}><strong>Log In</strong></MDBBtn>
                     </MDBNavItem>
                 </MDBNavbarNav>
             )
