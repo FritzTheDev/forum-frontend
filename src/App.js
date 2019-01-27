@@ -20,6 +20,7 @@ const App = () => {
             <Route path="/login" component={LoginPage} />
             <Route path="/thread/:thread_id" component={ThreadPage} />
             <Route exact path="/" component={HomePage} />
+            {/* profile */}
           </Switch>
         </div>
       </BrowserRouter>
