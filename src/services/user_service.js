@@ -1,16 +1,30 @@
 import axios from 'axios';
 
+// const login = (username, password) => {
+//     const requestOptions = {
+//         method: 'POST',
+//         headers: { 'content-type': 'application/json' },
+//         data: JSON.stringify({ username, password })
+//     };
+//     return axios.get('localhost:3000/user/authenticate', requestOptions)
+//         .then(handleResponse)
+//         .then(user => {
+//             localStorage.setItem('user', JSON.stringify(user));
+
+//             return user;
+//         });
+// }
+
 const login = (username, password) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         data: JSON.stringify({ username, password })
-    };
+    }
     return axios.get('localhost:3000/user/authenticate', requestOptions)
         .then(handleResponse)
         .then(user => {
             localStorage.setItem('user', JSON.stringify(user));
-
             return user;
         });
 }

@@ -6,8 +6,10 @@ import {
     MDBBtn
 } from "mdbreact";
 
+import { userActions } from '../actions/index'
+
 import { connect } from 'react-redux';
-import { userActions } from '../actions';
+import { login, logout } from '../actions/user_actions';
 
 class Navbar extends Component {
     state = { isOpen: false, user: null, username: '', password: '' };
@@ -83,10 +85,10 @@ class Navbar extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
+// const map = (state) => {
 //     return {
         
 //     }
 // }
 
-export default connect(null)(Navbar);
+export default connect(null, { login, logout })(Navbar);
