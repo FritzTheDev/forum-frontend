@@ -2,11 +2,6 @@ import { userConstants } from '../constants/user_constants';
 import { userService } from '../services';
 import { history } from '../helpers';
 
-export const user_actions = {
-    login,
-    logout
-};
-
 const login = (username, password) => {
     function request(user) { return { type: userConstants.LOGIN_REQUEST, user } };
     function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } };
