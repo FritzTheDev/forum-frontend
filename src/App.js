@@ -5,14 +5,16 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 import { SignupPage, LoginPage, HomePage, ThreadPage } from './pages'
+import { Navbar } from './components';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 const App = () => {
-  return(
+  return (
     <Provider store={createStoreWithMiddleware(reducers)}>
       <BrowserRouter>
         <div>
+          <Navbar />
           <Switch>
             <Route path="/signup" component={SignupPage} />
             <Route path="/login" component={LoginPage} />
