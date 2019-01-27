@@ -7,7 +7,6 @@ import {
 } from "mdbreact";
 
 import { connect } from 'react-redux';
-
 import { userActions } from '../actions';
 
 class Navbar extends Component {
@@ -68,13 +67,13 @@ class Navbar extends Component {
                     <MDBNavItem>
                         <MDBFormInline onSubmit={this.handleLoginSubmit}>
                             <div className="md-form my-0">
-                                <input className="form-control mr-sm-2" onChange={this.handleChange} type="email" name="email" placeholder="Email" />
+                                <input className="form-control mr-sm-2" onChange={this.handleChange.bind(this)} type="email" name="email" placeholder="Email" />
                             </div>
                             <div className="md-form my-0">
-                                <input className="form-control mr-sm-2" type="password" name="password" placeholder="Password" />
+                                <input className="form-control mr-sm-2" onChange={this.handleChange.bind(this)} type="password" name="password" placeholder="Password" />
                             </div>
                             <div className="md-form my-0 pl-4">
-                                <MDBBtn size="sm" outline color="white" onClick={this.handleLoginSubmit}><strong>Log In</strong></MDBBtn>
+                                <MDBBtn size="sm" outline color="white" onClick={this.handleLoginSubmit.bind(this)}><strong>Log In</strong></MDBBtn>
                             </div>
                         </MDBFormInline>
                     </MDBNavItem>
