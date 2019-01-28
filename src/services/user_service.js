@@ -1,20 +1,3 @@
-import axios from 'axios';
-
-// const login = (username, password) => {
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: { 'content-type': 'application/json' },
-//         data: JSON.stringify({ username, password })
-//     };
-//     return axios.get('localhost:3000/user/authenticate', requestOptions)
-//         .then(handleResponse)
-//         .then(user => {
-//             localStorage.setItem('user', JSON.stringify(user));
-
-//             return user;
-//         });
-// }
-
 const login = (email, password) => {
     const requestOptions = {
         method: 'POST',
@@ -26,7 +9,8 @@ const login = (email, password) => {
         .then(user => {
             localStorage.setItem('user', JSON.stringify(user));
             return user;
-        });
+        })
+        .catch(error => console.log(error));
 }
 
 const logout = () => {
@@ -34,22 +18,23 @@ const logout = () => {
 }
 
 
-const handleResponse = (response) => {
+function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
         if (!response.ok) {
             if (response.status === 401) {
+                // auto logout if 401 response returned from api
                 logout();
                 window.location.reload(true);
             }
+
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
-    console.log(data);
-    return data;
+
+        return data;
     });
 }
-
 export const userService = {
     login,
     logout

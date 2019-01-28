@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { login, logout } from '../actions/user_actions';
 
 class Navbar extends Component {
-    state = { isOpen: false, user: null, email: '', password: '' };
+    state = { isOpen: false, email: '', password: '' };
 
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
@@ -27,6 +27,9 @@ class Navbar extends Component {
         this.props.login( email, password );
     }
 
+    handleLogout = () => {
+        this.props.logout();
+    }
     render() {
         return (
             <MDBNavbar color="green darken-3 z-depth-2" dark expand="md">
@@ -44,14 +47,14 @@ class Navbar extends Component {
     }
 
     renderAuthSection() {
-        if (this.state.user) {
+        if (this.props.userData) {
             return (
                 <MDBNavbarNav right>
                     <MDBNavItem>
-                        <MDBNavLink to="/profile">Signed in as <strong>{this.state.user.username}</strong></MDBNavLink>
+                        <MDBNavLink to="/profile">Signed in as <strong>{this.props.userData.user.username}</strong></MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
-                        <MDBNavLink to="" onClick={() => console.log('Sign Out')}>Sign Out</MDBNavLink>
+                        <MDBNavLink to="" onClick={this.handleLogout.bind(this)}>Sign Out</MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
                     </MDBNavItem>
@@ -79,4 +82,10 @@ class Navbar extends Component {
     }
 }
 
-export default connect(null, { login, logout })(Navbar);
+const mapStateToProps = ({ auth }) => {
+    return {
+        userData: auth.userData
+    }
+}
+
+export default connect(mapStateToProps, { login, logout })(Navbar);
