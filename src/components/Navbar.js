@@ -35,7 +35,7 @@ class Navbar extends Component {
             <MDBNavbar color="green darken-3 z-depth-2" dark expand="md">
                 <MDBNavbarBrand>
                     <MDBNavLink to="/">
-                        <strong className="white-text">Forum Example</strong>
+                        <h3 style={{ fontFamily: 'Permanent Marker', marginBottom: 0 }} className="white-text">Forum Example</h3>
                     </MDBNavLink>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={this.toggleCollapse} />
