@@ -21,8 +21,8 @@ class Navbar extends Component {
         this.setState({ [name]: value });
     }
 
-
     handleLoginSubmit = (e) => {
+        e.preventDefault();
         const { email, password } = this.state;
         this.props.login( email, password );
     }
@@ -73,7 +73,7 @@ class Navbar extends Component {
                                 <input className="form-control mr-sm-2" onChange={this.handleChange.bind(this)} type="password" name="password" placeholder="Password" />
                             </div>
                             <div className="md-form my-0 pl-4">
-                                <MDBBtn size="sm" outline color="white" onClick={this.handleLoginSubmit.bind(this)}><strong>Log In</strong></MDBBtn>
+                                <MDBBtn size="sm" type="submit" outline color="white" onClick={this.handleLoginSubmit.bind(this)}><strong>Log In</strong></MDBBtn>
                             </div>
                         </MDBFormInline>
                     </MDBNavItem>
