@@ -47,11 +47,12 @@ class Navbar extends Component {
     }
 
     renderAuthSection() {
+        console.log(this.props.userData)
         if (this.props.userData) {
             return (
                 <MDBNavbarNav right>
                     <MDBNavItem>
-                        <MDBNavLink to="/profile">Signed in as <strong>{this.props.userData.user.username}</strong></MDBNavLink>
+                        <MDBNavLink to="/profile">Signed in as <strong>{this.props.userData.username}</strong></MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
                         <MDBNavLink to="" onClick={this.handleLogout.bind(this)}>Sign Out</MDBNavLink>
